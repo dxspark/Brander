@@ -1,0 +1,8 @@
+﻿namespace Brander.Sample
+{
+    public static class Constants
+    {
+        public const string GreetingMessage = "{{greetingMessage}}";
+        public const string DateFormat = "{{dateFormat}}";
+    }
+}

@@ -1,0 +1,23 @@
+﻿{
+  "variables": {
+    "greetingMessage": "hello earth!",
+    "dateFormat": "MM-dd-yy",
+    "executableName": "FancyName"
+  },
+  "templates": [
+    {
+      "source": "Constants.txt",
+      "target": "../Contants.cs"
+    },
+    {
+      "source": "Brander.Sample.txt",
+      "target": "Brander.Sample.csproj"
+    }
+  ],
+  "replace": [
+    {
+      "source": "ASCIIImage.txt",
+      "target": "ASCIIImage.txt"
+    }
+  ]
+}
