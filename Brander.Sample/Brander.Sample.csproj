@@ -16,12 +16,11 @@
     </CustomCommands>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="Branding\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="ASCIIImage.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Branding\ASCIIImage.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Branding\" />
   </ItemGroup>
 </Project>
