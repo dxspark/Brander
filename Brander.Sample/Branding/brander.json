@@ -7,17 +7,17 @@
   "templates": [
     {
       "source": "Constants.txt",
-      "target": "../Contants.cs"
+      "target": "../Constants.cs"
     },
     {
       "source": "Brander.Sample.txt",
-      "target": "Brander.Sample.csproj"
+      "target": "../Brander.Sample.csproj"
     }
   ],
   "replace": [
     {
       "source": "ASCIIImage.txt",
-      "target": "ASCIIImage.txt"
+      "target": "../ASCIIImage.txt"
     }
   ]
 }
