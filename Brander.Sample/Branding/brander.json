@@ -10,8 +10,8 @@
       "target": "../Constants.cs"
     },
     {
-      "source": "Brander.Sample.txt",
-      "target": "../Brander.Sample.csproj"
+      "source": "AssemblyInfo.txt",
+      "target": "../Properties/AssemblyInfo.cs"
     }
   ],
   "replace": [
