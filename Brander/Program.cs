@@ -35,7 +35,15 @@ namespace Brander
                     File.WriteAllText(templateTargetPath, finalContent);
                 }
             }
-
+            if (branderConfig["replace"] != null)
+            {
+                foreach (JObject replace in branderConfig["replace"])
+                {
+                    string replaceSourcePath = Path.Combine(branderDir, replace["source"].Value<string>());
+                    string replaceTargetPath = Path.Combine(branderDir, replace["target"].Value<string>());
+                    File.Copy(replaceSourcePath, replaceTargetPath, true);
+                }
+            }
         }
     }
 }
