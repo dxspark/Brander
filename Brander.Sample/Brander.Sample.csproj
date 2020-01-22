@@ -10,7 +10,7 @@
       <CustomCommands>
         <Command>
           <type>BeforeBuild</type>
-          <command>../Brander/bin/Debug/netcoreapp3.1/Brander $(ProjectDir)/Branding/brander.json</command>
+          <command>../Brander/bin/Debug/netcoreapp3.1/Brander ${ProjectDir}/Branding/brander.json</command>
         </Command>
       </CustomCommands>
     </CustomCommands>
