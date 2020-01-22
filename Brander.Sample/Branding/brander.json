@@ -1,17 +1,12 @@
 ﻿{
   "variables": {
     "greetingMessage": "hello earth!",
-    "dateFormat": "MM-dd-yy",
-    "executableName": "FancyName"
+    "dateFormat": "MM-dd-yy"
   },
   "templates": [
     {
       "source": "Constants.txt",
       "target": "../Constants.cs"
-    },
-    {
-      "source": "AssemblyInfo.txt",
-      "target": "../Properties/AssemblyInfo.cs"
     }
   ],
   "replace": [
