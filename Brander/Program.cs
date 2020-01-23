@@ -1,15 +1,54 @@
 ﻿using System.IO;
+using System.IO.Compression;
+using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
 namespace Brander
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            string branderFile = args[0];
-            string branderDir = Directory.GetParent(branderFile).FullName;
+            string branderPath = args[0];
+            string branderFile = string.Empty;
+            string branderDir = string.Empty;
+
+            if (Directory.Exists(branderPath))
+            {
+                branderFile = Path.Combine(branderPath, "brander.json");
+                branderDir = branderPath;
+            }
+            else
+            {
+                if (File.Exists(branderPath))
+                {
+                    branderFile = branderPath;
+                    branderDir = Directory.GetParent(branderFile).FullName;
+                }
+                else
+                {
+                    HttpClient client = new HttpClient();
+
+                    HttpResponseMessage response = await client.GetAsync(branderPath);
+
+                    using (var stream = await response.Content.ReadAsStreamAsync())
+                    {
+                        using (var fs = new FileStream("branding.zip", FileMode.Create))
+                        {
+                            await stream.CopyToAsync(fs);
+                        }
+                    }
+
+                    ZipFile.ExtractToDirectory("branding.zip", args[1]);
+
+                    File.Delete("branding.zip");
+
+                    branderFile = Path.Combine(args[1], "brander.json");
+                    branderDir = args[1];
+                }
+            }
 
             JObject branderConfig = JObject.Parse(File.ReadAllText(branderFile));
 
@@ -43,6 +82,11 @@ namespace Brander
                     string replaceTargetPath = Path.Combine(branderDir, replace["target"].Value<string>());
                     File.Copy(replaceSourcePath, replaceTargetPath, true);
                 }
+            }
+
+            if(args.Length > 1)
+            {
+                Directory.Delete(args[1], true);
             }
         }
     }
