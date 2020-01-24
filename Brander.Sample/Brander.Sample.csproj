@@ -17,6 +17,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Branding\" />
+    <Folder Include="SampleFolder\" />
+    <Folder Include="SampleFolder\SampleInnerFolder\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="ASCIIImage.txt">
