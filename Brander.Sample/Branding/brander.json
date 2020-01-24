@@ -11,8 +11,12 @@
   ],
   "replace": [
     {
-      "source": "ASCIIImage.txt",
-      "target": "../ASCIIImage.txt"
+        "source": "ASCIIImage.txt",
+        "target": "../ASCIIImage.txt"
+    },
+    {
+        "source": "BrandedFolder",
+        "target": "../SampleFolder"
     }
   ]
 }

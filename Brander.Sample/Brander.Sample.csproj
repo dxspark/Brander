@@ -19,6 +19,8 @@
     <Folder Include="Branding\" />
     <Folder Include="SampleFolder\" />
     <Folder Include="SampleFolder\SampleInnerFolder\" />
+    <Folder Include="Branding\BrandedFolder\" />
+    <Folder Include="Branding\BrandedFolder\SampleInnerFolder\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="ASCIIImage.txt">

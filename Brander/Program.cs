@@ -33,9 +33,9 @@ namespace Brander
 
                     HttpResponseMessage response = await client.GetAsync(branderPath);
 
-                    using (var stream = await response.Content.ReadAsStreamAsync())
+                    using (Stream stream = await response.Content.ReadAsStreamAsync())
                     {
-                        using (var fs = new FileStream("branding.zip", FileMode.Create))
+                        using (FileStream fs = new FileStream("branding.zip", FileMode.Create))
                         {
                             await stream.CopyToAsync(fs);
                         }
@@ -78,9 +78,22 @@ namespace Brander
             {
                 foreach (JObject replace in branderConfig["replace"])
                 {
-                    string replaceSourcePath = Path.Combine(branderDir, replace["source"].Value<string>());
-                    string replaceTargetPath = Path.Combine(branderDir, replace["target"].Value<string>());
-                    File.Copy(replaceSourcePath, replaceTargetPath, true);
+                    string replaceSourcePath = Path.GetFullPath(Path.Combine(branderDir, replace["source"].Value<string>()));
+                    string replaceTargetPath = Path.GetFullPath(Path.Combine(branderDir, replace["target"].Value<string>()));
+
+
+                    if (File.Exists(replaceSourcePath))
+                    {
+                        File.Copy(replaceSourcePath, replaceTargetPath, true);
+                    }
+                    else
+                    {
+                        string[] filesToReplace = Directory.GetFiles(replaceSourcePath, "*.*", SearchOption.AllDirectories);
+                        foreach(string file in filesToReplace)
+                        {
+                            File.Copy(file, file.Replace(replaceSourcePath, replaceTargetPath), true);
+                        }
+                    }
                 }
             }
 

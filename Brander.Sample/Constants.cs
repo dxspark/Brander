@@ -1,8 +1,8 @@
-﻿namespace Brander.Sample
+namespace Brander.Sample
 {
     public static class Constants
     {
-        public const string GreetingMessage = "Hello World";
-        public const string DateFormat = "dddd dd MMMMM";
+        public const string GreetingMessage = "hello earth!";
+        public const string DateFormat = "MM-dd-yy";
     }
 }
